@@ -9,6 +9,10 @@ namespace Leap.Unity.Examples
     public HandPoseDetector detectorRight;
     public HandPoseDetector detectorLeft;
 
+    public GameObject handLeft;
+    public GameObject handRight;
+    public Hand rightHand;
+
     public GameObject textGameobject;
     public TextMeshProUGUI text;
     UserStatus userStatus;
@@ -35,7 +39,11 @@ namespace Leap.Unity.Examples
       {
         textGameobject.SetActive(false);
       }
-      Debug.Log(userStatus.GetSetMeishiScore);
+      if (handLeft.activeSelf)
+      {
+        Debug.Log(handLeft);
+
+      }
     }
   }
 }
