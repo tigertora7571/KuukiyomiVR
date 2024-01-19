@@ -7,17 +7,24 @@ namespace Leap.Unity.Examples
   {
 
     [Header("References")]
-    public HandPoseDetector detector;
+    public HandPoseDetector detectorRight;
+    [Header("References")]
+    public HandPoseDetector detectorLeft;
+
+    public GameObject textGameobject;
+    public TextMeshProUGUI text;
 
     void Update()
     {
-      HandPoseScriptableObject detectedPose = detector.GetCurrentlyDetectedPose();
-      if (detectedPose != null)
+      HandPoseScriptableObject detectedPoseRight = detectorRight.GetCurrentlyDetectedPose();
+      HandPoseScriptableObject detectedPoseLeft = detectorLeft.GetCurrentlyDetectedPose();
+      if (detectedPoseRight != null && detectedPoseLeft != null)
       {
-        // Detect
+        textGameobject.SetActive(true);
       }
       else
       {
+        textGameobject.SetActive(false);
       }
     }
   }
