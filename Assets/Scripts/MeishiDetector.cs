@@ -6,13 +6,19 @@ namespace Leap.Unity.Examples
   public class MeishiDetector : MonoBehaviour
   {
 
-    [Header("References")]
     public HandPoseDetector detectorRight;
-    [Header("References")]
     public HandPoseDetector detectorLeft;
 
     public GameObject textGameobject;
     public TextMeshProUGUI text;
+    UserStatus userStatus;
+
+    void Start()
+    {
+      userStatus = new UserStatus(); //インスタンス化
+      Debug.Log(userStatus.GetSetMeishiScore);
+    }
+
 
     void Update()
     {
@@ -21,11 +27,15 @@ namespace Leap.Unity.Examples
       if (detectedPoseRight != null && detectedPoseLeft != null)
       {
         textGameobject.SetActive(true);
+        // スコア上昇
+        userStatus.GetSetMeishiScore = 1;
+
       }
       else
       {
         textGameobject.SetActive(false);
       }
+      Debug.Log(userStatus.GetSetMeishiScore);
     }
   }
 }
